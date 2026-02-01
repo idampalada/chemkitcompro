@@ -1,188 +1,222 @@
-"use client";
-
 import Image from "next/image";
-import { useState } from "react";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 export default function HomePage() {
-  const [mobileOpen, setMobileOpen] = useState(false);
-
-  const menu = [
-    { name: "Tentang Kami", href: "#tentang" },
-    { name: "Visi dan Misi", href: "#visi" },
-    { name: "Produk & Layanan", href: "#produk" },
-    { name: "Kontak Kami", href: "#kontak" },
-  ];
-
   return (
     <div className="min-h-screen bg-white">
-      {/* ================= HEADER ================= */}
-      <header className="fixed top-0 left-0 w-full bg-white z-50">
-        <div className="relative w-full h-[160px]">
-          {/* LOGO KIRI */}
-          <div className="absolute left-0 top-0 h-full flex items-center pl-6 z-50">
+      <Navbar />
+
+      {/* ================= BANNER ================= */}
+      <section className="pt-[160px] overflow-hidden">
+        <img
+          src="/bannerchemkit.png"
+          alt="Banner Chemkit"
+          className="w-full h-[400px] object-cover block"
+        />
+      </section>
+
+      {/* ================= SECTION CONTENT ================= */}
+      <main>
+        <section className="relative w-full py-28 overflow-hidden -mb-12">
+          {/* 🔥 BACKGROUND IMAGE (FIX) */}
+          <div className="absolute inset-0 z-0 pointer-events-none">
             <Image
-              src="/logochemkitremovebg.png"
-              alt="CHEM-KIT"
-              width={210}
-              height={65}
+              src="/backgroundhome.png"
+              alt="Background Home"
+              fill
+              className="object-cover"
               priority
             />
           </div>
 
-          <nav
-            className="hidden lg:flex absolute left-1/2 top-1/2 
-  -translate-x-1/2 -translate-y-1/2 z-50"
-          >
-            {/* GARIS HITAM PANJANG (STANDBY) */}
-            <div className="absolute bottom-0 left-0 w-full h-[2px] bg-black" />
-
-            {/* MENU ITEM */}
-            <div className="flex space-x-16 relative">
-              {menu.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="
-          relative pb-3
-          text-gray-900 font-medium text-[17px]
-          after:absolute after:left-0 after:bottom-0
-          after:h-[2px] after:w-0 after:bg-red-500
-          after:transition-all after:duration-300
-          hover:after:w-full
-        "
-                >
-                  {item.name}
-                </a>
-              ))}
+          {/* ================= PRODUK UTAMA ================= */}
+          <div className="relative z-10 w-full mb-40">
+            <div className="absolute right-0 top-1/2 -translate-y-1/2 hidden lg:block z-20">
+              <div className="relative w-[360px] aspect-square rounded-2xl overflow-hidden shadow-xl">
+                <Image
+                  src="/rapidd.png"
+                  alt="Rapid Test Kit"
+                  fill
+                  className="object-cover"
+                />
+              </div>
             </div>
-          </nav>
 
-          {/* LOGO KANAN */}
-          <div className="absolute right-0 top-0 w-[320px] pr-6">
-            <div className="h-[160px] overflow-hidden flex justify-end items-start">
-              <Image
-                src="/logoremovebg.jpeg"
-                alt="CHEM-KIT Icon"
-                width={320}
-                height={320}
-                className="object-contain scale-[2.3] origin-top -translate-y-24 translate-x-10"
-                priority
-              />
-            </div>
-          </div>
-
-          {/* MOBILE BUTTON */}
-          <button
-            className="lg:hidden absolute right-4 top-1/2 -translate-y-1/2 z-50"
-            onClick={() => setMobileOpen(!mobileOpen)}
-          >
-            {mobileOpen ? (
-              <XMarkIcon className="w-8 h-8" />
-            ) : (
-              <Bars3Icon className="w-8 h-8" />
-            )}
-          </button>
-        </div>
-
-        {/* MOBILE MENU */}
-        {mobileOpen && (
-          <div className="lg:hidden bg-white border-t">
-            {menu.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="block px-10 py-5 border-b"
-                onClick={() => setMobileOpen(false)}
+            <div className="max-w-[1600px] mx-auto px-10">
+              <div
+                className="max-w-[720px] bg-white/90 backdrop-blur rounded-2xl p-10 ml-[420px]
+  shadow-[0_20px_50px_rgba(0,0,0,0.12)]
+  border border-white/40
+"
               >
-                {item.name}
-              </a>
-            ))}
+                <h3 className="text-2xl font-semibold mb-4 text-gray-900">
+                  Produk Utama
+                </h3>
+                <ul className="list-disc pl-5 space-y-2 text-gray-800">
+                  <li>
+                    Rapid Test Kit (Tes Kit: Formalin, Boraks, Rhodamin B,
+                    Metanil Yellow, Garam Beryodium, Nitrit, Peroksida dan Kit
+                    Uji Ayam Tiren)
+                  </li>
+                  <li>Reagen Kimia & Biokimia Laboratorium</li>
+                </ul>
+              </div>
+            </div>
           </div>
-        )}
-      </header>
 
-      {/* ================= BANNER ================= */}
-      <section className="pt-[160px] relative overflow-hidden">
-        <div className="relative w-full h-[500px]">
+          {/* ================= LAYANAN ================= */}
+          <div className="relative z-10 w-full">
+            <div className="absolute left-0 top-1/2 -translate-y-1/2 hidden lg:block z-20">
+              <div className="relative w-[360px] aspect-square rounded-2xl overflow-hidden shadow-xl">
+                <Image
+                  src="/layanan.jpeg"
+                  alt="Layanan Chemkit"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </div>
+
+            <div className="max-w-[1600px] mx-auto px-10">
+              <div
+                className="max-w-[720px] bg-white/90 backdrop-blur rounded-2xl p-10 ml-[300px] -mt-[40px]
+  shadow-[0_20px_50px_rgba(0,0,0,0.12)]
+  border border-white/40
+"
+              >
+                <h3 className="text-2xl font-semibold mb-4 text-gray-900">
+                  Layanan
+                </h3>
+                <ul className="list-disc pl-5 space-y-2 text-gray-800">
+                  <li>Pengembangan produk sesuai kebutuhan pelanggan</li>
+                  <li>Konsultasi teknis laboratorium</li>
+                  <li>Pelatihan penggunaan produk</li>
+                  <li>Dukungan validasi dan aplikasi metode</li>
+                  <li>Bimtek Pengujian & Kalibrasi Peralatan</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      {/* ================= SECTION KEUNGGULAN KAMI ================= */}
+      <section className="relative w-full h-[550px] overflow-hidden">
+        {/* BACKGROUND IMAGE */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
           <Image
-            src="/bannerchemkit.png"
-            alt="Banner Chemkit"
+            src="/backgroundhomee.png"
+            alt="Background Keunggulan Kami"
             fill
-            className="object-cover"
+            className="object-cover object-center"
             priority
           />
         </div>
-      </section>
 
-      {/* ================= CONTENT ================= */}
-      <main>
-        <section
-          id="tentang"
-          className="min-h-screen flex items-center justify-center"
-        >
-          <h2 className="text-4xl font-bold text-gray-300">
-            [ Tentang Kami Section ]
-          </h2>
-        </section>
-      </main>
+        {/* CONTENT */}
+        <div className="relative z-10 max-w-[1200px] mx-auto px-10">
+          {/* JUDUL */}
+          <h3 className="text-3xl font-semibold text-gray-900 text-center mb-12">
+            Keunggulan Kami
+          </h3>
 
-      {/* ================= FOOTER ================= */}
-      <footer className="relative w-full h-[300px] overflow-hidden text-white">
-        {/* Background Image */}
-        <Image
-          src="/footer.png"
-          alt="Footer Chemkit"
-          fill
-          className="object-cover"
-          priority
-        />
-
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-black/50" />
-
-        {/* Content */}
-        <div className="relative z-10 max-w-[1600px] mx-auto h-full px-10 flex items-center">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 w-full">
-            {/* LEFT */}
-            <div>
-              <h3 className="text-lg font-semibold mb-4">Penutup</h3>
-              <p className="text-sm leading-relaxed text-gray-200">
-                PT. Chemkit Multi Guna terus berinovasi dan meningkatkan
-                kualitas produk untuk menjadi mitra terpercaya dalam penyediaan
-                solusi rapid tes kit kimia yang handal dan akurat serta ramah
-                lingkungan.
-                <br />
-                <br />
-                Dengan semangat profesionalisme dan integritas, kami siap
-                mendukung kemajuan layanan makanan yang aman dan bermutu menuju
-                masyarakat sehat di Indonesia.
+          {/* ================= BARIS ATAS ================= */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-20 mb-20">
+            {/* ITEM 1 */}
+            <div className="flex flex-col items-center text-center">
+              <h4 className="text-lg font-semibold text-gray-900 mb-4">
+                Penerapan Standar Mutu Ketat
+              </h4>
+              <Image
+                src="/checklist.png"
+                alt="Checklist Icon"
+                width={48}
+                height={48}
+                className="mb-4"
+              />
+              <p className="text-gray-700 text-sm leading-relaxed max-w-xs">
+                Diproduksi dengan sistem manajemen mutu yang terkontrol
               </p>
             </div>
 
-            {/* RIGHT */}
-            <div>
-              <h3 className="text-lg font-semibold mb-4">Kontak Kami</h3>
-              <ul className="text-sm space-y-3 text-gray-200">
-                <li>
-                  <strong>Alamat :</strong>
-                  <br />
-                  Serua Indah VI, Serua Residence Blok A1-B1, Pamulang Timur,
-                  Pamulang
-                  <br />
-                  Tangerang Selatan 15417
-                </li>
-                <li>
-                  <strong>Telepon :</strong> 085282208799
-                </li>
-                <li>
-                  <strong>Email :</strong> chemkit@gmail.com
-                </li>
-              </ul>
+            {/* ITEM 2 */}
+            <div className="flex flex-col items-center text-center">
+              <h4 className="text-lg font-semibold text-gray-900 mb-4">
+                Tim Profesional
+              </h4>
+              <Image
+                src="/group-chat.png"
+                alt="Tim Icon"
+                width={48}
+                height={48}
+                className="mb-4"
+              />
+              <p className="text-gray-700 text-sm leading-relaxed max-w-xs">
+                Didukung oleh tenaga ahli kimia dan analis laboratorium senior
+                yang berpengalaman
+              </p>
+            </div>
+
+            {/* ITEM 3 */}
+            <div className="flex flex-col items-center text-center">
+              <h4 className="text-lg font-semibold text-gray-900 mb-4">
+                Inovatif & Adaptif
+              </h4>
+              <Image
+                src="/creativity.png"
+                alt="Inovasi Icon"
+                width={48}
+                height={48}
+                className="mb-4"
+              />
+              <p className="text-gray-700 text-sm leading-relaxed max-w-xs">
+                Responsif terhadap kebutuhan pasar dan perkembangan teknologi
+                serta mendukung program Green Laboratorium
+              </p>
+            </div>
+          </div>
+
+          {/* ================= BARIS BAWAH ================= */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-28 max-w-[900px] mx-auto">
+            {/* ITEM 4 */}
+            <div className="flex flex-col items-center text-center">
+              <h4 className="text-lg font-semibold text-gray-900 mb-4">
+                Produk Dalam Negeri
+              </h4>
+              <Image
+                src="/box.png"
+                alt="Produk Icon"
+                width={48}
+                height={48}
+                className="mb-4"
+              />
+              <p className="text-gray-700 text-sm leading-relaxed max-w-xs">
+                Mendukung TKDN dan kemandirian reagensia kit nasional
+              </p>
+            </div>
+
+            {/* ITEM 5 */}
+            <div className="flex flex-col items-center text-center">
+              <h4 className="text-lg font-semibold text-gray-900 mb-4">
+                Distribusi Pelanggan yang Luas
+              </h4>
+              <Image
+                src="/global.png"
+                alt="Distribusi Icon"
+                width={48}
+                height={48}
+                className="mb-4"
+              />
+              <p className="text-gray-700 text-sm leading-relaxed max-w-xs">
+                Jaringan distribusi yang menjangkau berbagai wilayah di
+                Indonesia
+              </p>
             </div>
           </div>
         </div>
-      </footer>
+      </section>
+
+      <Footer />
     </div>
   );
 }

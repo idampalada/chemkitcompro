@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Lora } from "next/font/google";
+
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const lora = Lora({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-lora",
+});
 
 export const metadata: Metadata = {
   title: "PT Chemkit Multi Guna - Industri Reagen & Rapid Test Kit Indonesia",
@@ -143,7 +148,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${inter.className} antialiased`}>
+      <body className={`${lora.className} antialiased`}>
         <noscript>
           <div
             style={{
